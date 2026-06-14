@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Web Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container"></div>
+    <div id="crosshair">+</div>
+    <div id="mining-progress" aria-hidden="true">
+        <div id="mining-progress-fill"></div>
+    </div>
+    <div id="eating-progress" aria-hidden="true">
+        <div id="eating-progress-fill"></div>
+    </div>
+    <div id="throw-progress" aria-hidden="true">
+        <div id="throw-progress-fill"></div>
+    </div>
+    <div id="survival-hud" aria-label="玩家狀態">
+        <div id="health-bar" class="status-row" aria-label="生命值"></div>
+        <div id="hunger-bar" class="status-row" aria-label="飢餓值"></div>
+    </div>
+    <div id="first-person-hand" aria-hidden="true">
+        <div class="fp-arm"></div>
+        <div class="fp-held-item" id="fp-held-item"></div>
+    </div>
+
+    <div id="overlay">
+        <main id="menu" aria-labelledby="game-title">
+            <header class="menu-logo">
+                <h1 id="game-title" aria-label="Minecraft">
+                    <span class="logo-main">MINECRAFT</span>
+                    <span class="logo-edition">WEB EDITION</span>
+                </h1>
+            </header>
+
+            <div class="menu-actions">
+                <button id="btn-play" type="button">開始遊戲</button>
+                <div class="menu-secondary-actions" aria-label="其他遊戲選項">
+                    <button class="menu-secondary-button" type="button" disabled>多人遊戲</button>
+                    <button class="menu-secondary-button" type="button" disabled>Minecraft Realms</button>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="menu-footer">
+            <span>Minecraft Web Edition 1.0</span>
+            <span>非官方 Three.js 致敬作品</span>
+        </footer>
+    </div>
+
+    <div id="inventory-panel" class="mc-inventory">
+        <div class="mc-panel-wrap">
+            <div class="mc-panel">
+                <div class="mc-top-row">
+                    <div class="mc-avatar-wrap">
+                        <div class="mc-avatar" id="player-avatar">
+                            <div class="avatar-model" id="avatar-model">
+                                <div class="avatar-head">
+                                    <img class="avatar-face-front" src="./player-face.png" alt="player face" />
+                                </div>
+                                <div class="avatar-body"></div>
+                                <div class="avatar-arm left"></div>
+                                <div class="avatar-arm right"></div>
+                                <div class="avatar-leg left"></div>
+                                <div class="avatar-leg right"></div>
+                            </div>
+                        </div>
+                        <div class="mc-equip-column" id="equip-column">
+                            <div class="slot equip-slot" data-equip="helmet" title="頭盔"></div>
+                            <div class="slot equip-slot" data-equip="chest" title="護甲"></div>
+                            <div class="slot equip-slot" data-equip="legs" title="護腿"></div>
+                            <div class="slot equip-slot" data-equip="boots" title="鞋子"></div>
+                        </div>
+                    </div>
+                    <div class="mc-crafting-area" id="crafting-area">
+                        <div class="mc-title" id="crafting-title">2x2</div>
+                        <div class="mc-craft-grid" id="craft-grid"></div>
+                        <div class="mc-craft-result" id="craft-result"></div>
+                    </div>
+                    <div class="mc-furnace-area" id="furnace-area">
+                        <div class="mc-title">熔爐</div>
+                        <div class="furnace-slots">
+                            <div class="furnace-left">
+                                <div class="slot furnace-slot" id="furnace-input"></div>
+                                <div class="slot furnace-slot" id="furnace-fuel"></div>
+                            </div>
+                            <div class="mc-furnace-progress"><div id="furnace-progress-fill"></div></div>
+                            <div class="slot furnace-slot" id="furnace-output"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mc-title" style="margin-top:8px;">背包（E 開關）</div>
+                <div id="inventory-list" class="mc-inventory-grid"></div>
+                <div class="mc-title" style="margin-top:6px;">物品欄</div>
+                <div id="inventory-hotbar-grid" class="mc-hotbar-grid"></div>
+                <div id="crafting-message" class="mc-message"></div>
+            </div>
+
+            <div class="mc-recipe-book">
+                <div class="mc-title">合成表</div>
+                <div id="quick-craft-list" class="quick-craft-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.136.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="game.js?v=start-button-fix-11"></script>
+</body>
+</html>
